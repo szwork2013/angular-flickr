@@ -6,11 +6,11 @@ class PublicPhotosFeed {
         this.apiUrl = 'https://api.flickr.com/services/feeds/photos_public.gne';
     }
 
-    getItems(tag) {
+    getItems(tags = 'potato') {
         return this.$http
             .jsonp(this.apiUrl, {
                 params: {
-                    tags: tag || 'potato',
+                    tags: tags,
                     tagmode: 'all',
                     format: 'json',
                     jsoncallback: 'JSON_CALLBACK'
