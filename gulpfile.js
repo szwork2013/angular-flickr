@@ -22,7 +22,7 @@ taskMaker.defineTask('clean', {taskName: 'clean', src: paths.output});
 
 taskMaker.defineTask('less', {
     src: paths.styles + '/**/*.less',
-    dest: paths.output
+    dest: paths.output + 'styles/'
 });
 
 taskMaker.defineTask('babel', {
