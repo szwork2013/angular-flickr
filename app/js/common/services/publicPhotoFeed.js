@@ -24,7 +24,8 @@ class PublicPhotosFeed {
                     tagmode: 'all',
                     format: 'json',
                     jsoncallback: 'JSON_CALLBACK'
-                }
+                },
+                cache: this.cache
             })
             .then((res) => {
                 // transform all items
