@@ -1,31 +1,30 @@
 import angular from 'angular';
 import 'angular-animate';
-import 'angular-route';
+import 'angular-ui-router';
 
 import HomeController from 'controllers/homeController';
 import DetailController from 'controllers/detailController';
 import PublicPhotoFeed from 'common/services/publicPhotoFeed';
 
-var app = angular.module('flickr-app', ['ngAnimate', 'ngRoute'])
+var app = angular.module('flickr-app', ['ngAnimate', 'ui.router'])
     .controller(HomeController.name, HomeController)
     .controller(DetailController.name, DetailController)
     .service(PublicPhotoFeed.name, PublicPhotoFeed);
 
 /*@ngInject*/
-app.config(function ($routeProvider) {
-    // html5 mode could be set here, but
-    $routeProvider
-        .when('/home', {
+app.config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('home', {
+            url: '/home',
             templateUrl: 'app/templates/home.tpl.html',
             controller: HomeController.name
         })
-        .when('/details/:itemId', {
+        .state('details', {
+            url: '/details/:itemId',
             templateUrl: 'app/templates/detail.tpl.html',
             controller: DetailController.name
-        })
-        .otherwise({
-            redirectTo: '/home'
         });
+    $urlRouterProvider.otherwise("/home");
 });
 
 angular.element(document).ready(function () {

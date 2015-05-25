@@ -1,11 +1,12 @@
 class DetailController {
     /*@ngInject*/
-    constructor($scope, $route, PublicPhotosFeed) {
-        $scope.item = {};
-
-        PublicPhotosFeed.getItem($route.current.params.itemId)
+    constructor($scope, $stateParams, PublicPhotosFeed) {
+        PublicPhotosFeed.getItem($stateParams.itemId)
             .then((item) => {
                 $scope.item = item;
+            }, (errMsg) => {
+                $scope.message = errMsg;
+                console.error('error', errMsg);
             });
     }
 }
