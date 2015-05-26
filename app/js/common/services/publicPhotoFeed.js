@@ -1,6 +1,6 @@
 import {clearPublicPhotoFeedItem} from 'common/helpers';
 
-class PublicPhotosFeed {
+class PublicPhotoFeed {
     /*@ngInject*/
     constructor($http, $q, $cacheFactory) {
         this.$http = $http;
@@ -66,4 +66,4 @@ class PublicPhotosFeed {
     }
 }
 
-export default PublicPhotosFeed;
+export default PublicPhotoFeed;

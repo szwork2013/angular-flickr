@@ -1,9 +1,9 @@
 class HomeController {
     /*@ngInject*/
-    constructor($scope, PublicPhotosFeed) {
+    constructor($scope, PublicPhotoFeed) {
         $scope.items = [];
 
-        PublicPhotosFeed.getItems()
+        PublicPhotoFeed.getItems()
             .then((items) => {
                 console.log('feed items', items);
                 $scope.items = items;

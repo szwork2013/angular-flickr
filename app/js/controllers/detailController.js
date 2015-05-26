@@ -1,7 +1,7 @@
 class DetailController {
     /*@ngInject*/
-    constructor($scope, $stateParams, PublicPhotosFeed) {
-        PublicPhotosFeed.getItem($stateParams.itemId)
+    constructor($scope, $stateParams, PublicPhotoFeed) {
+        PublicPhotoFeed.getItem($stateParams.itemId)
             .then((item) => {
                 $scope.item = item;
             }, (errMsg) => {

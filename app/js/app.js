@@ -7,28 +7,28 @@ import DetailController from 'controllers/detailController';
 import PublicPhotoFeed from 'common/services/publicPhotoFeed';
 
 var app = angular.module('flickr-app', ['ngAnimate', 'ui.router'])
-    .controller(HomeController.name, HomeController)
-    .controller(DetailController.name, DetailController)
-    .service(PublicPhotoFeed.name, PublicPhotoFeed);
+    .controller('HomeController', HomeController)
+    .controller('DetailController', DetailController)
+    .service('PublicPhotoFeed', PublicPhotoFeed);
 
 /*@ngInject*/
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url: '/home',
-            templateUrl: 'app/templates/home.tpl.html',
-            controller: HomeController.name
+            templateUrl: '/templates/home.tpl.html',
+            controller: 'HomeController'
         })
         .state('details', {
             url: '/details/:itemId',
-            templateUrl: 'app/templates/detail.tpl.html',
-            controller: DetailController.name
+            templateUrl: '/templates/detail.tpl.html',
+            controller: 'DetailController'
         });
     $urlRouterProvider.otherwise("/home");
 });
 
 angular.element(document).ready(function () {
-    angular.bootstrap(document.body, [app.name], {});
+    angular.bootstrap(document.body, [app.name]);
 });
 
 export default app;
