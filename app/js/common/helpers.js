@@ -1,8 +1,5 @@
-import angular from 'angular';
-
 var idCounter = 0;
 
-// TODO: this could probably use some jQuery/angular methods for compatibility
 function getTextContent(description) {
     var div = document.createElement('div');
     div.innerHTML = description;
