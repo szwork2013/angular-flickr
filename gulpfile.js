@@ -14,6 +14,7 @@ gulp.task('html-index', function () {
     return gulp.src([
         'app/index.html'
     ])
+        .pipe($.plumber())
         .pipe($.cheerio(function ($) {
             // remove all script tags
             $('script').remove();
@@ -31,6 +32,7 @@ gulp.task('html-templates', function () {
     return gulp.src([
         'app/templates/**/*.html'
     ])
+        .pipe($.plumber())
         .pipe($.minifyHtml())
         .pipe(gulp.dest('dist/templates'))
         .pipe($.size({title: 'html-templates'}));
@@ -66,6 +68,7 @@ gulp.task('styles', function () {
     var lessStream = gulp.src([
         'app/**/*.less'
     ])
+        .pipe($.plumber())
         .pipe($.less({
             plugins: [cleancss, autoprefix]
         }));
@@ -73,6 +76,7 @@ gulp.task('styles', function () {
     var bootstrapStream = gulp.src([
         'jspm_packages/github/twbs/**/css/bootstrap.css'
     ])
+        .pipe($.plumber())
         .pipe($.uncss({
             html: [
                 'app/**/*.html'
@@ -107,6 +111,7 @@ gulp.task('bundle-sfx', function (callback) {
 // runs ng-annotate and minifies the bundle
 gulp.task('bundle-process', function () {
     return gulp.src(['.tmp/app.js'])
+        .pipe($.plumber())
         .pipe($.ngAnnotate())
         .pipe($.uglify())
         .pipe($.rename({
