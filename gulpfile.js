@@ -7,6 +7,7 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var Builder = require('systemjs-builder');
+var merge2 = require('merge2');
 
 // create production index.html
 gulp.task('html-index', function () {
@@ -61,18 +62,27 @@ gulp.task('styles', function () {
         cleancss = new LessPluginCleanCSS({advanced: true}),
         autoprefix = new LessPluginAutoprefix({browsers: AUTOPREFIXER_BROWSERS});
 
-    return gulp.src([
+    // TODO: generate sourcemaps for both streams
+    var lessStream = gulp.src([
         'app/**/*.less'
     ])
-        .pipe($.changed('.tmp/styles', {extension: '.css'}))
-        .pipe($.sourcemaps.init())
         .pipe($.less({
             plugins: [cleancss, autoprefix]
-        }))
+        }));
+
+    var bootstrapStream = gulp.src([
+        'jspm_packages/github/twbs/**/css/bootstrap.css'
+    ])
+        .pipe($.uncss({
+            html: [
+                'app/**/*.html'
+            ]
+        }));
+
+    return merge2(lessStream, bootstrapStream)
         .pipe($.concat('styles/styles.css'))
         .pipe(gulp.dest('.tmp'))
-        .pipe($.if('*.css', $.csso()))
-        .pipe($.sourcemaps.write('.'))
+        .pipe($.csso())
         .pipe(gulp.dest('dist'))
         .pipe($.size({title: 'styles'}));
 });
@@ -121,8 +131,8 @@ gulp.task('serve', ['styles'], function () {
         server: ['.', '.tmp', 'app']
     });
 
-    gulp.watch(['app/**/*.{html,js}'], reload);
-    gulp.watch(['app/styles/**/*.less'], ['styles', reload]);
+    // always rebuild styles due to uncss on bootstrap
+    gulp.watch(['app/**/*'], ['styles', reload]);
 });
 
 // 'production' serve
@@ -134,6 +144,10 @@ gulp.task('serve:dist', ['dist'], function () {
         ghostMode: false,
         server: ['dist']
     });
+
+    gulp.watch(['app/**/*.js'], ['bundle', reload]);
+    gulp.watch(['app/**/*.html'], ['html', reload]);
+    gulp.watch(['app/styles/**/*.less'], ['styles', reload]);
 });
 
 gulp.task('dist', function (callback) {

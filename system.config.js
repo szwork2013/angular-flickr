@@ -20,6 +20,7 @@ System.config({
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
     "babel": "npm:babel-core@5.4.7",
     "babel-runtime": "npm:babel-runtime@5.4.7",
+    "bootstrap": "github:twbs/bootstrap@3.3.4",
     "core-js": "npm:core-js@0.9.11",
     "github:angular-ui/ui-router@0.2.15": {
       "angular": "github:angular/bower-angular@1.3.15"
@@ -29,6 +30,9 @@ System.config({
     },
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
+    },
+    "github:twbs/bootstrap@3.3.4": {
+      "jquery": "github:components/jquery@2.1.4"
     },
     "npm:core-js@0.9.11": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
