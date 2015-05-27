@@ -2,13 +2,11 @@ import {clearPublicPhotoFeedItem} from 'common/helpers';
 
 class PublicPhotoFeed {
     /*@ngInject*/
-    constructor($http, $q, $cacheFactory) {
+    constructor($http, $q, $cacheFactory, apiUrl) {
         this.$http = $http;
         this.$q = $q;
-
-        // TODO: this could provided by external config
-        this.apiUrl = 'https://api.flickr.com/services/feeds/photos_public.gne';
         this.cache = $cacheFactory('photoFeed');
+        this.apiUrl = apiUrl;
     }
 
     getItems(tags = 'potato') {
@@ -21,7 +19,6 @@ class PublicPhotoFeed {
             .jsonp(this.apiUrl, {
                 params: {
                     tags: tags,
-                    tagmode: 'all',
                     format: 'json',
                     jsoncallback: 'JSON_CALLBACK'
                 },
@@ -59,6 +56,9 @@ class PublicPhotoFeed {
                     } else {
                         deferred.reject();
                     }
+                })
+                .error(() => {
+                    deferred.reject();
                 });
         }
 

@@ -4,9 +4,6 @@ class DetailController {
         PublicPhotoFeed.getItem($stateParams.itemId)
             .then((item) => {
                 $scope.item = item;
-            }, (errMsg) => {
-                $scope.message = errMsg;
-                console.error('error', errMsg);
             });
     }
 }

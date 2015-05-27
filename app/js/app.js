@@ -9,6 +9,9 @@ import TagsDirective from 'directives/tags';
 import PublicPhotoFeed from 'services/publicPhotoFeed';
 
 var app = angular.module('flickr-app', ['ngAnimate', 'ui.router'])
+    // constants
+    .constant('apiUrl', 'https://api.flickr.com/services/feeds/photos_public.gne')
+
     // controllers
     .controller('HomeController', HomeController)
     .controller('DetailController', DetailController)
