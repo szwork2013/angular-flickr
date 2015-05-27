@@ -83,7 +83,7 @@ gulp.task('styles', function () {
             ]
         }));
 
-    return merge2(lessStream, bootstrapStream)
+    return merge2(bootstrapStream, lessStream)
         .pipe($.concat('styles/styles.css'))
         .pipe(gulp.dest('.tmp'))
         .pipe($.csso())
