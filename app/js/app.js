@@ -6,7 +6,7 @@ import HomeController from 'controllers/homeController';
 import DetailController from 'controllers/detailController';
 import ItemTimeDirective from 'directives/itemTime';
 import TagsDirective from 'directives/tags';
-import PublicPhotoFeed from 'common/services/publicPhotoFeed';
+import PublicPhotoFeed from 'services/publicPhotoFeed';
 
 var app = angular.module('flickr-app', ['ngAnimate', 'ui.router'])
     // controllers
