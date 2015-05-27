@@ -2,11 +2,11 @@
     <a class="btn btn-default pull-right" ui-sref='home'>Back</a>
     <header class="row-fluid">
         <h1>
-            <a href="{{ item.link }}">{{ item.title }}</a>
+            <a href="{{ item.link }}"  target="_blank">{{ item.title }}</a>
         </h1>
 
         <h5>
-            <a href="{{ item.authorLink }}" alt="{{ item.authorNickname }}">{{ item.author }}</a> |
+            <a href="{{ item.authorLink }}" target="_blank">{{ item.author }}</a> |
             <item-time time="item.date_taken"/>
         </h5>
     </header>
