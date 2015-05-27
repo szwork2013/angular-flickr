@@ -1,0 +1,26 @@
+<a class="btn btn-default pull-right" ui-sref='home'>Back</a>
+<article>
+    <header>
+        <h1>
+            <a href="{{ item.link }}">{{ item.title }} </a>
+        </h1>
+
+        <h5>
+            <a href="{{ item.authorLink }}" alt="{{ item.authorNickname }}">{{ item.author }}</a> |
+            <time datatime="{{ item.date_taken }}">Published: {{ item.date_taken | date: "dd MMM yyyy 'at' HH:mm" }}
+            </time>
+        </h5>
+    </header>
+    <div class="col-xs-12 col-sm-3">
+        <img class="img-responsive" ng-src="{{ item.imageUrl }}" alt="{{ item.title }}">
+    </div>
+    <div class="col-xs-12 col-sm-9">
+        <p>
+            {{ item.description }}
+        </p>
+
+        <footer>
+            <tags tags="item.tags"></tags>
+        </footer>
+    </div>
+</article>

@@ -1,3 +1,10 @@
-body {
-  font-size: 100%; //just to setup gulp task
+.main-view {
+  &.ng-enter {
+    transition: opacity ease-in 300ms;
+    opacity: 0;
+  }
+
+  &.ng-enter-active {
+    opacity: 1;
+  }
 }
