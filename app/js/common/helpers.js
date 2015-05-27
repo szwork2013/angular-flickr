@@ -20,7 +20,7 @@ function clearPublicPhotoFeedItem(item) {
         let itemId,
             authorNickname;
 
-        if (item.link.includes('flickr.com/')) {
+        if (item.link.indexOf('flickr.com/') > -1) {
             // link format: https://www.flickr.com/photos/USER_NAME/POST_ID/
             [,,,,authorNickname,itemId] = item.link.split('/');
         }
