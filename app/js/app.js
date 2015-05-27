@@ -4,6 +4,7 @@ import 'angular-ui-router';
 
 import HomeController from 'controllers/homeController';
 import DetailController from 'controllers/detailController';
+import ItemTimeDirective from 'directives/itemTime';
 import TagsDirective from 'directives/tags';
 import PublicPhotoFeed from 'common/services/publicPhotoFeed';
 
@@ -13,6 +14,7 @@ var app = angular.module('flickr-app', ['ngAnimate', 'ui.router'])
     .controller('DetailController', DetailController)
 
     // directives
+    .directive('itemTime', () => new ItemTimeDirective())
     .directive('tags', () => new TagsDirective())
 
     // services

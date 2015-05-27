@@ -1,26 +1,25 @@
-<a class="btn btn-default pull-right" ui-sref='home'>Back</a>
-<article>
-    <header>
+<article class="well col-xs-12">
+    <a class="btn btn-default pull-right" ui-sref='home'>Back</a>
+    <header class="row-fluid">
         <h1>
-            <a href="{{ item.link }}">{{ item.title }} </a>
+            <a href="{{ item.link }}">{{ item.title }}</a>
         </h1>
 
         <h5>
             <a href="{{ item.authorLink }}" alt="{{ item.authorNickname }}">{{ item.author }}</a> |
-            <time datatime="{{ item.date_taken }}">Published: {{ item.date_taken | date: "dd MMM yyyy 'at' HH:mm" }}
-            </time>
+            <item-time time="item.date_taken"/>
         </h5>
     </header>
-    <div class="col-xs-12 col-sm-3">
-        <img class="img-responsive" ng-src="{{ item.imageUrl }}" alt="{{ item.title }}">
-    </div>
-    <div class="col-xs-12 col-sm-9">
-        <p>
-            {{ item.description }}
-        </p>
+    <div class="row">
+        <div class="col-sm-3">
+            <img class="img-thumbnail" ng-src="{{ item.imageUrl }}" alt="{{ item.title }}">
+        </div>
+        <div class="col-sm-9">
+            <p>{{ item.description }}</p>
 
-        <footer>
-            <tags tags="item.tags"></tags>
-        </footer>
+            <footer>
+                <tags tags="item.tags"/>
+            </footer>
+        </div>
     </div>
 </article>

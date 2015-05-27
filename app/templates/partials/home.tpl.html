@@ -1,5 +1,25 @@
-<ul>
-    <li ng-repeat="item in items">
-        <a ui-sref="details({ itemId: item.id })"><img ng-src="{{item.imageUrl}}"></a>
-    </li>
-</ul>
+<section>
+    <article class="row well" ng-repeat="item in items">
+        <div class="col-sm-3">
+            <a ui-sref="details({ itemId: item.id })">
+                <img class="img-thumbnail" ng-src="{{ item.imageUrl }}" alt="{{ item.title }}">
+            </a>
+        </div>
+        <div class="col-sm-9">
+            <a ui-sref="details({ itemId: item.id })">
+                <h2 class="list-item-title">{{ item.title }}</h2>
+            </a>
+            <footer>
+                <div class="list-item-description list-item-push">
+                    <item-time time="item.date_taken"/>
+                </div>
+                <div class="list-item-description list-item-pull">
+                    <a href="{{ item.authorLink }}">{{ item.author }}</a>
+                </div>
+                <div class="list-item-description">
+                    <a href="{{ item.link }}">View on Flickr</a>
+                </div>
+            </footer>
+        </div>
+    </article>
+</section>

@@ -1,4 +1,48 @@
+@breakpoint: 800px;
+@column-width: 33.33333333%;
+
+.ellipsis(@width: 100%) {
+  overflow: hidden;
+  white-space: nowrap;
+  width: @width;
+  text-overflow: ellipsis;
+}
+
 .main-view {
+
+  .list-item-description {
+    width: @column-width;
+    float: left;
+    position: relative;
+    min-height: 1px;
+  }
+
+  .list-item-push {
+    width: 100%;
+  }
+
+  @media screen and (min-width: @breakpoint) {
+    .list-item-push {
+      left: @column-width;
+      width: @column-width;
+    }
+
+    .list-item-pull {
+      right: @column-width;
+    }
+  }
+
+  // just to avoid overlapping on very small screens
+  @media screen and (max-width: (@breakpoint / 2)) {
+    .list-item-description {
+      width: 100%;
+    }
+  }
+
+  .list-item-title {
+    .ellipsis;
+  }
+
   &.ng-enter {
     transition: opacity ease-in 300ms;
     opacity: 0;
