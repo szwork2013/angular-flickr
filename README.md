@@ -12,7 +12,7 @@ Simple AngularJS app for consuming public Flickr API.
 ### How to
 - clone repo
 - run ```npm install```
-- when done run ```gulp serve:dist``` to build and serve the app it with [Browsersync](http://www.browsersync.io/)
+- when done run ```gulp serve:dist``` to build and serve the app with [Browsersync](http://www.browsersync.io/)
 
 ### Demo
 [Click here](https://katzoo.github.io/angular-flickr/) to see live demo.
