@@ -1,6 +1,6 @@
-<strong>Tags</strong>
+<strong>{{ tagText || 'Tags' }}</strong>
 <ul class="list-inline">
-    <li ng-repeat="tag in tags">
-        <a href="#" ng-model="tag" class="label label-default">{{ tag }}</a>
+    <li ng-repeat="tagName in tags">
+        <tag name="tagName" />
     </li>
 </ul>

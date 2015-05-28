@@ -1,4 +1,7 @@
 <section>
+    <div class="alert alert-info" role="alert">
+        Showing <span class="badge">{{ items.length }}</span> matching posts.
+    </div>
     <article class="row well" ng-repeat="item in items">
         <div class="col-sm-3">
             <a ui-sref="details({ itemId: item.id })">
@@ -7,17 +10,23 @@
         </div>
         <div class="col-sm-9">
             <a ui-sref="details({ itemId: item.id })">
-                <h2 class="list-item-title">{{ item.title }}</h2>
+                <h1 class="list-item-title">{{ item.title }}</h1>
             </a>
             <footer>
-                <div class="list-item-description list-item-push">
-                    <item-time time="item.published"/>
+                <div class="row">
+                    <div class="list-item-description list-item-push">
+                        <item-time time="item.published"/>
+                    </div>
+                    <div class="list-item-description list-item-pull">
+                        <a href="{{ item.authorLink }}" target="_blank">{{ item.author }}</a>
+                    </div>
+                    <div class="list-item-description">
+                        <a href="{{ item.link }}" target="_blank">View on Flickr</a>
+                    </div>
                 </div>
-                <div class="list-item-description list-item-pull">
-                    <a href="{{ item.authorLink }}" target="_blank">{{ item.author }}</a>
-                </div>
-                <div class="list-item-description">
-                    <a href="{{ item.link }}" target="_blank">View on Flickr</a>
+                <hr>
+                <div class="row">
+                    <tags tags="item.tags"/>
                 </div>
             </footer>
         </div>

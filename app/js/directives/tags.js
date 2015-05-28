@@ -4,7 +4,8 @@ class TagsDirective {
         this.templateUrl = 'templates/directives/tags.tpl.html';
         this.restrict = 'E';
         this.scope = {
-            tags: '='
+            tags: '=',
+            tagText: '@'
         };
     }
 }

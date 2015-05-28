@@ -2,10 +2,13 @@ import angular from 'angular';
 import 'angular-animate';
 import 'angular-ui-router';
 
-import HomeController from 'controllers/homeController';
-import DetailController from 'controllers/detailController';
+import HomeController from 'controllers/home';
+import DetailController from 'controllers/detail';
+import NavController from 'controllers/nav';
 import ItemTimeDirective from 'directives/itemTime';
+import TagDirective from 'directives/tag';
 import TagsDirective from 'directives/tags';
+import CurrentTags from 'services/currentTags';
 import PublicPhotoFeed from 'services/publicPhotoFeed';
 
 var app = angular.module('flickr-app', ['ngAnimate', 'ui.router'])
@@ -18,12 +21,16 @@ var app = angular.module('flickr-app', ['ngAnimate', 'ui.router'])
     // controllers
     .controller('HomeController', HomeController)
     .controller('DetailController', DetailController)
+    .controller('NavController', NavController)
 
     // directives
+    // TODO: check how to use class form of directives (if possible w/o () => new ...)
     .directive('itemTime', () => new ItemTimeDirective())
+    .directive('tag', TagDirective)
     .directive('tags', () => new TagsDirective())
 
     // services
+    .service('CurrentTags', CurrentTags)
     .service('PublicPhotoFeed', PublicPhotoFeed);
 
 /*@ngInject*/
