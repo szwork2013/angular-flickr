@@ -2,14 +2,17 @@ import {clearPublicPhotoFeedItem} from 'common/helpers';
 
 class PublicPhotoFeed {
     /*@ngInject*/
-    constructor($http, $q, $cacheFactory, apiUrl) {
+    constructor($http, $q, $cacheFactory, feedConfig) {
         this.$http = $http;
         this.$q = $q;
         this.cache = $cacheFactory('photoFeed');
-        this.apiUrl = apiUrl;
+
+        // feed configuration
+        this.apiUrl = feedConfig.apiUrl;
+        this.defaultTag = feedConfig.defaultTag;
     }
 
-    getItems(tags = 'potato') {
+    getItems(tags = this.defaultTag) {
         // multiple tags are separated by commas
         if (Array.isArray(tags) && tags.length > 0) {
             tags = tags.join(',');
@@ -56,10 +59,9 @@ class PublicPhotoFeed {
                     } else {
                         deferred.reject();
                     }
-                })
-                .error(() => {
+                }, () => {
                     deferred.reject();
-                });
+                })
         }
 
         return deferred.promise;

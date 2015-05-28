@@ -10,7 +10,10 @@ import PublicPhotoFeed from 'services/publicPhotoFeed';
 
 var app = angular.module('flickr-app', ['ngAnimate', 'ui.router'])
     // constants
-    .constant('apiUrl', 'https://api.flickr.com/services/feeds/photos_public.gne')
+    .constant('feedConfig', {
+        apiUrl: 'https://api.flickr.com/services/feeds/photos_public.gne',
+        defaultTag: 'potato'
+    })
 
     // controllers
     .controller('HomeController', HomeController)
