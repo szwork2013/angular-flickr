@@ -2,15 +2,15 @@
     <div class="alert alert-info" role="alert">
         Showing <span class="badge">{{ items.length }}</span> matching posts.
     </div>
-    <article class="row well" ng-repeat="item in items">
+    <article class="row well" ng-repeat="item in items track by item.id">
         <div class="col-sm-3">
             <a ui-sref="details({ itemId: item.id })">
-                <img class="img-thumbnail" ng-src="{{ item.imageUrl }}" alt="{{ item.title }}">
+                <img class="img-thumbnail" ng-src="{{ ::item.imageUrl }}" alt="{{ ::item.title }}">
             </a>
         </div>
         <div class="col-sm-9">
             <a ui-sref="details({ itemId: item.id })">
-                <h1 class="list-item-title">{{ item.title }}</h1>
+                <h1 class="list-item-title">{{ ::item.title }}</h1>
             </a>
             <footer>
                 <div class="row">
@@ -18,10 +18,10 @@
                         <item-time time="item.published"/>
                     </div>
                     <div class="list-item-description list-item-pull">
-                        <a href="{{ item.authorLink }}" target="_blank">{{ item.author }}</a>
+                        <a href="{{ ::item.authorLink }}" target="_blank">{{ ::item.author }}</a>
                     </div>
                     <div class="list-item-description">
-                        <a href="{{ item.link }}" target="_blank">View on Flickr</a>
+                        <a href="{{ ::item.link }}" target="_blank">View on Flickr</a>
                     </div>
                 </div>
                 <hr>

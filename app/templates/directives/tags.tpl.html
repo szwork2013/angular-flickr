@@ -1,6 +1,8 @@
-<strong>{{ tagText || 'Tags' }}</strong>
-<ul class="list-inline">
-    <li ng-repeat="tagName in tags">
-        <tag name="tagName" />
-    </li>
-</ul>
+<div ng-if="tags.length">
+    <strong>{{ ::tagText || 'Tags' }}</strong>
+    <ul class="list-inline">
+        <li ng-repeat="tagName in tags">
+            <tag name="tagName"/>
+        </li>
+    </ul>
+</div>
